@@ -1,0 +1,42 @@
+{% extends 'structure.html' %}
+{% block main %}
+    <h2 class="text-center">Welcome To The Dashboard</h2>
+    <div class="container logo">
+        <img class="image-fluid " src="../static/images/R.png" alt="">
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <main class="col-md-5 shida-dev">
+                <h3>Requests</h3>
+                <h4>Kindly Make a request</h4>
+                <form action="/request_info" method="POST" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    {{ form.request_title(placeholder='Enter Request Title', class="form-control") }}
+                    {{ form.request_info(placeholder='Type in your request', class="form-control") }}
+                    {{ form.submit(value='Send Request', class="btn btn-success") }}
+                    {{ retrieve }}
+                    <p>When a request is made, it will appear below</p>
+                </form>
+                {% for info in info_f %}
+                <div class="row">
+                    <h3 class="">{{ info.request_title }}</h3>
+                    <p class="">{{ info.request_info }}</p>
+                    <p>Time requested:       {{ info.feedback_time }}</p>
+                    <div class="col-md-6">
+                        <button class="btn btn-light">update</button>
+                        <button class="btn btn-danger">delete</button>                         
+                    </div>
+                </div>
+                {% endfor %}
+            </main>
+            <main class="col-md-5 shida-dev">
+                <h3>Solutions</h3>
+                <div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem fugit sit tenetur repudiandae sapiente eos ad hic, tempore eligendi deserunt, atque a sint cupiditate excepturi reprehenderit quo consequatur dicta velit?</p>
+                    <button class="btn btn-warning">Seen</button>
+                </div>
+            </main>
+        </div>
+    </div>
+  {% endblock main %}

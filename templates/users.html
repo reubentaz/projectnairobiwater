@@ -1,0 +1,39 @@
+{% extends 'structure.html' %}
+{% block main %}
+
+    <h2 class="text-center">All Users</h2>
+    <div class="container logo">
+        <img class="image-fluid " src="../static/images/R.png" alt="">
+
+    </div>
+    <main class="container">
+        <table class="table table-hover table-responsive">
+            <tr>
+                <thead>
+                    <th>Man Number</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </thead>
+            </tr>
+            <tbody>
+                {% for person in persons %}
+                <tr>
+                    <td>{{person.mannumber}}</td>
+                    <td>{{person.first_name}} {{ person.second_name }}</td>
+                    <td>{{ person.email }}</td>
+                    <td>{{ person.role }}</td>
+                    <td>
+                        <button class="btn btn-primary">update</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>               
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </main>
+    {% endblock main %}
+
+    

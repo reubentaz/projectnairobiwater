@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --background: #2734df;
+}
+
+body{
+    background-color: azure;
+    /* background-color: var(--background); */
+}
+nav{
+    background-color: var(--background);
+    color: white !important;
+}
+.navbar-brand, .nav-item a{
+    color: white;
+}
+h2{
+    color: blue;
+}
+main{
+    margin: auto;
+    width: 50%;
+    background-color: var(--background);
+    border-radius: 5px;
+    padding: 2%;
+    color: white;
+}
+.logo{
+    margin: auto;
+    width: 100%;
+}
+
+.shida-dev{
+    margin: 20px;
+}
+
+thead th{
+    color: white;
+}
+tbody:hover{
+    cursor:crosshair;
+}
+
+footer{
+    bottom: 0;
+    position: fixed;
+}
+
+ /* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }
