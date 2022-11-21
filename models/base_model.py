@@ -39,7 +39,3 @@ class User(Base):
     email = Column(String(100), unique=True)
     role = Column(String(50), nullable=False)
     registration_time = Column(DateTime, default=datetime.now, nullable=False)
-    
-
-    
-

@@ -40,7 +40,8 @@ def log_in(mannumber):
         user = session.query(User).filter(User.mannumber==mannumber).first()
 
         if user is not None:
-            return user.password
+            print("==================>\n{} this is it".format(user.password))
+            return user
         else:
             return None
     except:
