@@ -30,7 +30,7 @@ def home():
         pwd = log_in(mannumber)
 
         if pwd:
-            if check_password_hash(pwd, password):
+            if check_password_hash(pwd, form.password.data):
                 message = "It has accepted"
                 # return render_template('index.html', form=form, message=message)
                 return redirect(url_for('request_info'))

@@ -33,11 +33,11 @@ class User(Base):
     """
     __tablename__='users'
     mannumber = Column(Integer, nullable=False, primary_key=True)
-    password= Column(String(100), nullable=False)
-    first_name= Column(String(255), nullable=False)
-    second_name= Column(String(100), nullable=False)
-    email= Column(String(100), unique=True)
-    role= Column(String(50), nullable=False)
+    password = Column(String(100), nullable=False)
+    first_name = Column(String(255), nullable=False)
+    second_name = Column(String(100), nullable=False)
+    email = Column(String(100), unique=True)
+    role = Column(String(50), nullable=False)
     registration_time = Column(DateTime, default=datetime.now, nullable=False)
     
 

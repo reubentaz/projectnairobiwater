@@ -39,9 +39,10 @@ def log_in(mannumber):
     try:
         user = session.query(User).filter(User.mannumber==mannumber).first()
 
-        if user:
+        if user is not None:
             return user.password
-        return None
+        else:
+            return None
     except:
         raise
 
