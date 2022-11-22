@@ -1,10 +1,10 @@
+from email import message
 from flask import Flask, Blueprint, render_template, request, abort, session, url_for, redirect
 from datetime import datetime
 from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm
 from models.base_model import Base, engine
-from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, delete_request,\
-    get_request
+from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -77,23 +77,26 @@ def update_req(id):
 
     req = get_request(id)
 
-    # info_f = requests_made()
+    info_f = requests_made()
 
     form.request_info.data = req.request_info
     form.request_title.data = req.request_title
+
+    message = req.request_info
 
     if form.validate_on_submit():
         request_info = form.request_info.data
         request_title = form.request_title.data
 
-        retrieve = feedback_submission(request_title, request_info)
+        retrieve = feedback_edit(request_title, request_info, req.request_id)
         if retrieve:
             form.request_info.data = ''
             form.request_title.data = ''
 
-            return redirect(url_for("request_info"))
+            return redirect(url_for("request_info", retrieve=retrieve))
         return redirect(url_for("request_info"))
-    return redirect(url_for("request_info"))
+    # return redirect(url_for("request_info"))
+    return render_template("request_edit.html", form=form, info_f=info_f, id=id)
 
 
 @app.route("/register_info", methods=['GET','POST'])

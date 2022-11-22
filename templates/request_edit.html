@@ -1,0 +1,19 @@
+{% extends 'structure.html' %}
+{% block main %}
+    <h2 class="text-center">Kindly Login</h2>
+    <div class="container logo d-flex justify-content-center">
+        <img class="image-fluid " src="../static/images/R.png" alt="">
+    </div>
+    <main class="container">
+
+        <form action="/update_request/{{id}}" method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.request_title(placeholder='Enter Request Title', class="form-control") }}
+            {{ form.request_info(placeholder='Type in your request', class="form-control") }}
+            {{ form.submit(value='Send Request', class="btn btn-success") }}
+            {{ retrieve }}
+        </form>
+
+    </main>
+
+{% endblock main %} 

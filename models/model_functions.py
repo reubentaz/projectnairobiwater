@@ -1,3 +1,4 @@
+# from app import request_info
 from models.base_model import Feedback, engine, User
 from sqlalchemy.orm import sessionmaker
 
@@ -54,5 +55,20 @@ def delete_request(id):
     return "Deleted"
 
 def get_request(id):
-    user_request = session.query(Feedback).get(id)
-    return user_request
+    # user_request = session.query(Feedback).get(id)
+    my_user_request = session.query(Feedback).filter(Feedback.request_id==id).first()
+    return my_user_request
+
+
+def feedback_edit(title, info, id):
+    try:
+        fuser_request = session.query(Feedback).get(id)
+        # feedback = Feedback(request_title=title, request_info=info)
+        # session.update(fuser_request)
+        fuser_request.request_title = title
+        fuser_request.request_info = info
+        session.commit()
+        return 'Feedback updated'
+    except BaseException:
+        session.rollback()
+        raise
