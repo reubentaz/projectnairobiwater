@@ -3,7 +3,8 @@ from datetime import datetime
 from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm
 from models.base_model import Base, engine
-from models.model_functions import feedback_submission, requests_made, register, get_users, log_in
+from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, delete_request,\
+    get_request
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -47,6 +48,7 @@ def request_info():
 
     info_f = requests_made()
 
+
     if form.validate_on_submit():
         request_info = form.request_info.data
         request_title = form.request_title.data
@@ -55,9 +57,43 @@ def request_info():
         if retrieve:
             form.request_info.data = ''
             form.request_title.data = ''
-        return render_template('requests.html', form=form, retrieve=retrieve, info_f=info_f)       
+        return render_template('requests.html', form=form, retrieve=retrieve, info_f=info_f, deletion=delete_request)       
 
     return render_template('requests.html', form=form, info_f=info_f)
+
+
+@app.route("/delete_request/<id>", methods=['GET', 'POST'])
+def delete_req(id):
+    form = RequestForm()
+
+    delete = delete_request(id)
+    
+    return redirect(url_for("request_info"))
+
+
+@app.route("/update_request/<id>", methods=["GET", "POST"])
+def update_req(id):
+    form = RequestForm()
+
+    req = get_request(id)
+
+    # info_f = requests_made()
+
+    form.request_info.data = req.request_info
+    form.request_title.data = req.request_title
+
+    if form.validate_on_submit():
+        request_info = form.request_info.data
+        request_title = form.request_title.data
+
+        retrieve = feedback_submission(request_title, request_info)
+        if retrieve:
+            form.request_info.data = ''
+            form.request_title.data = ''
+
+            return redirect(url_for("request_info"))
+        return redirect(url_for("request_info"))
+    return redirect(url_for("request_info"))
 
 
 @app.route("/register_info", methods=['GET','POST'])

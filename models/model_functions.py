@@ -47,3 +47,12 @@ def log_in(mannumber):
     except:
         raise
 
+def delete_request(id):
+    user_request = session.query(Feedback).get(id)
+    session.delete(user_request)
+    session.commit()
+    return "Deleted"
+
+def get_request(id):
+    user_request = session.query(Feedback).get(id)
+    return user_request

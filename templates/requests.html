@@ -1,9 +1,8 @@
 {% extends 'structure.html' %}
 {% block main %}
     <h2 class="text-center">Welcome To The Dashboard</h2>
-    <div class="container logo">
+    <div class="container logo d-flex justify-content-center">
         <img class="image-fluid " src="../static/images/R.png" alt="">
-
     </div>
     <div class="container">
         <div class="row">
@@ -24,8 +23,13 @@
                     <p class="">{{ info.request_info }}</p>
                     <p>Time requested:       {{ info.feedback_time }}</p>
                     <div class="col-md-6">
-                        <button class="btn btn-light">update</button>
-                        <button class="btn btn-danger">delete</button>                         
+                        <a href="/update_request/{{info.request_id}}">
+                            <button class="btn btn-light">Update</button>                         
+                        </a>
+                        <!-- <button class="btn btn-light">update</button> -->
+                        <a href="/delete_request/{{info.request_id}}">
+                            <button class="btn btn-danger">delete</button>                         
+                        </a>
                     </div>
                 </div>
                 {% endfor %}
