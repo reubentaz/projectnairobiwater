@@ -5,10 +5,13 @@ from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm
 from models.base_model import Base, engine
 from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit
+from routes.req import my_req
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = 'ef2287ceaf05dada6c29bfb77a9f8f14'
+
+app.register_blueprint(my_req)
 
 @app.errorhandler(404)
 def error(error):

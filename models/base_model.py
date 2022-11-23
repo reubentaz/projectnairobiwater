@@ -1,3 +1,4 @@
+# from click import pass_obj
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from datetime import datetime
@@ -26,6 +27,8 @@ class Feedback(Base):
     # email = Column(String(100), nullable=True)
     feedback_time = Column(DateTime, default=datetime.now, nullable=False)
 
+    solutions = relationship('Solution', backref='requests')
+
 
 class User(Base):
     """
@@ -39,3 +42,11 @@ class User(Base):
     email = Column(String(100), unique=True)
     role = Column(String(50), nullable=False)
     registration_time = Column(DateTime, default=datetime.now, nullable=False)
+
+
+class Solution(Base):
+    __tablename__="solutions"
+    solution_id = Column(Integer, nullable=False, primary_key=True)
+    solution_text = Column(LONGTEXT, nullable=False)
+
+    request_id = Column(Integer, ForeignKey('requests.request_id'))
