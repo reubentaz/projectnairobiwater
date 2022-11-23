@@ -23,3 +23,10 @@ class RegisterForm(FlaskForm):
     role= StringField('role', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
     submit = SubmitField('submit')
+
+
+class SolutionForm(FlaskForm):
+    request = IntegerField('request_id')
+    solution = StringField('solution', validators=[DataRequired()])
+    submit = SubmitField('submit')
+

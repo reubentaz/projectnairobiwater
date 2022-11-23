@@ -1,5 +1,5 @@
 # from app import request_info
-from models.base_model import Feedback, engine, User
+from models.base_model import Feedback, engine, User, Solution
 from sqlalchemy.orm import sessionmaker
 
 Session = sessionmaker(bind=engine)
@@ -32,9 +32,22 @@ def register(mannumber, firstname, secondname, email, role, password):
         session.rollback()
         raise
 
+
+def solution_submission(text, id):
+    try:
+        solution = Solution(solution_text="", request_id="")
+        session.add(solution)
+        session.commit()
+        return "Solution Given"
+    except BaseException:
+        session.rollback()
+        raise
+
+
 def get_users():
     users =session.query(User).all()
     return users
+
 
 def log_in(mannumber):
     try:
@@ -47,6 +60,7 @@ def log_in(mannumber):
             return None
     except:
         raise
+
 
 def delete_request(id):
     user_request = session.query(Feedback).get(id)

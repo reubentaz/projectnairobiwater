@@ -18,12 +18,12 @@
         <h4>Solutions</h4>
         <div class="row">
             <div class="card col-md-5">
-                <div class="card-title">
-                    <h5>{{ request_details.request_title }}</h5>
-                </div>
-                <div class="card-text">
-                    {{ request_details.request_info }}
-                </div>
+                <form action="/" method="POST" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    {{ form.request(placeholder='Enter request ID', class="form-control disabled", disabled=True) }}
+                    {{ form.solution(placeholder='Type in solution', class="form-control") }}
+                    {{ form.submit(value='Provide Solution', class="btn btn-info") }}
+                </form>
             </div>
             <div class="card col-md-5">
                 <div class="card-title">
