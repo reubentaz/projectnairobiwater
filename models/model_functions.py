@@ -44,6 +44,11 @@ def solution_submission(text, id):
         raise
 
 
+def get_solutions(id):
+    info = session.query(Solution).filter(Solution.request_id==id).all()
+    return info
+
+
 def get_users():
     users =session.query(User).all()
     return users

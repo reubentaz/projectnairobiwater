@@ -2,9 +2,9 @@ from email import message
 from flask import Flask, Blueprint, render_template, request, abort, session, url_for, redirect
 from datetime import datetime
 from jinja2 import TemplateNotFound
-from models.myforms import LoginForm, RequestForm, RegisterForm
+from models.myforms import LoginForm, RequestForm, RegisterForm, SolutionForm
 from models.base_model import Base, engine
-from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit
+from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit, solution_submission
 from routes.req import my_req
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -134,6 +134,21 @@ def register_info():
 def users():
     persons = get_users()
     return render_template('users.html', persons=persons)
+
+
+@app.route("/solution/<id>", methods=['GET', 'POST'])
+def sol(id):
+    form = SolutionForm()
+    
+    if form.validate_on_submit():
+        solution = form.solution.data
+
+        info = solution_submission(solution, form.request.data)
+        
+        request_details = get_request(id)
+
+
+        return render_template("request_page.html", request_details=request_details, form=form, id=id, info=info, sol=sol)
 
 
 if __name__ =='__main__':
