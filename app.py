@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# <<<<<<< HEAD
 from flask import Flask, Blueprint, render_template, request, abort, session, url_for, redirect
 from datetime import datetime
 from jinja2 import TemplateNotFound
@@ -192,5 +192,5 @@ def users():
 
 
 if __name__ =='__main__':
->>>>>>> main
+# >>>>>>> main
     app.run(host='0.0.0.0', port=5000, debug=True)
