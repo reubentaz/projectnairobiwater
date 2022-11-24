@@ -49,4 +49,4 @@ class Solution(Base):
     solution_id = Column(Integer, nullable=False, primary_key=True)
     solution_text = Column(LONGTEXT, nullable=False)
 
-    request_id = Column(Integer, ForeignKey('requests.request_id'))
+    request_id = Column(Integer, ForeignKey('requests.request_id'), nullable=False)

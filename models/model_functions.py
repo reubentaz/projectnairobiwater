@@ -35,7 +35,7 @@ def register(mannumber, firstname, secondname, email, role, password):
 
 def solution_submission(text, id):
     try:
-        solution = Solution(solution_text="", request_id="")
+        solution = Solution(solution_text=text, request_id=id)
         session.add(solution)
         session.commit()
         return "Solution Given"

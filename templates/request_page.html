@@ -26,14 +26,13 @@
                 </form>
                 {{ info }}
             </div>
-            <div class="card col-md-5">
-                <div class="card-title">
-                    <h5>{{ request_details.request_title }}</h5>
+                {% for one in sol: %}
+                <div class="card col-md-5">
+                    <div class="card-text">
+                        {{ one.solution_text }}
+                    </div>
                 </div>
-                <div class="card-text">
-                    {{ request_details.request_info }}
-                </div>
-            </div>
+                {% endfor %}
         </div>
     </div>
 {% endblock main %}

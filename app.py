@@ -5,7 +5,7 @@ from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm, SolutionForm
 from models.base_model import Base, engine
 from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit, solution_submission
-from routes.req import my_req
+from routes.req import my_req, display
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -50,7 +50,6 @@ def request_info():
     form = RequestForm()
 
     info_f = requests_made()
-
 
     if form.validate_on_submit():
         request_info = form.request_info.data
@@ -142,13 +141,14 @@ def sol(id):
     
     if form.validate_on_submit():
         solution = form.solution.data
+        print("=============>id", id)
 
-        info = solution_submission(solution, form.request.data)
+        info = solution_submission(solution, id )
         
         request_details = get_request(id)
 
 
-        return render_template("request_page.html", request_details=request_details, form=form, id=id, info=info, sol=sol)
+        return redirect("/request/"+id)
 
 
 if __name__ =='__main__':
