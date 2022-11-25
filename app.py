@@ -33,7 +33,7 @@ def home():
 
         pwd = log_in(mannumber)
 
-        if pwd == password:
+        if pwd is password:
             # if check_password_hash(pwd, form.password.data):
             #     message = "It has accepted"
             #     # return render_template('index.html', form=form, message=message)
@@ -115,7 +115,9 @@ def register_info():
         password= form.password.data
 
 
-        retrieve = register(mannumber,firstname,secondname,email,role, generate_password_hash(password))
+        # retrieve = register(mannumber,firstname,secondname,email,role, generate_password_hash(password))
+        retrieve = register(mannumber,firstname,secondname,email,role, password)
+
         if retrieve:
             form.mannumber.data=''
             form.firstname.data=''
@@ -124,7 +126,8 @@ def register_info():
             form.role.data=''
             form.password.data=''
 
-        return render_template('register.html', form=form, retrieve=retrieve)
+        # return render_template('register.html', form=form, retrieve=retrieve)
+        return redirect(url_for('home'))
 
     return render_template('register.html', form=form)
 
