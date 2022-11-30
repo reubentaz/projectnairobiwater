@@ -33,14 +33,14 @@ def home():
 
         pwd = log_in(mannumber)
 
-        if pwd is check_password_hash(pwd, password):
+        if pwd and check_password_hash(pwd, password):
             # if check_password_hash(pwd, form.password.data):
             #     message = "It has accepted"
             #     # return render_template('index.html', form=form, message=message)
             #     return redirect(url_for('request_info'))
             # return render_template('index.html', form=form, message=f"{pwd} : hash")
-            return render_template('index.html', form=form, message="logged in")
-        return render_template('index.html', form=form, message=f"{pwd.first_name} : pwd")
+            return redirect(url_for('request_info'))
+        return render_template('index.html', form=form, message=f"{pwd} : pwd")
 
     return render_template('index.html', form=form)
 
