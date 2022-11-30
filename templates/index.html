@@ -1,9 +1,11 @@
 {% extends 'structure.html' %}
 {% block main %}
+
     <h2 class="text-center">Kindly Login</h2>
     <div class="container logo d-flex justify-content-center">
         <img class="image-fluid " src="../static/images/R.png" alt="">
     </div>
+
     <main class="container">
 
         <form action="/" method="POST" enctype="multipart/form-data">
@@ -14,7 +16,7 @@
                 {{ form.submit(class='btn btn-primary') }}
             </div>
             {{ message }}
-            <p>Are you admin? Kindly create accounts here</p>
+            <p>Are you admin? Kindly create accounts <a href="">here</a></p>
         </form>
 
     </main>

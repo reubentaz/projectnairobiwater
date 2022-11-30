@@ -51,6 +51,12 @@ footer{
     bottom: 0;
     position: fixed;
 }
+main a {
+    color: aqua;
+}
+main a:hover{
+    color: rgb(151, 201, 241);
+}
 
  /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {

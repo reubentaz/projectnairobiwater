@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
+    {% block nav_block %}
+        {% include 'nav.html' %}
+    {% endblock nav_block %}
     {% block header %}
     {% endblock header %}
 
