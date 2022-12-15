@@ -60,6 +60,7 @@ def request_info():
         if retrieve:
             form.request_info.data = ''
             form.request_title.data = ''
+            flash('Request submitted successfully', 'success'), {"Refresh": "1; url=/request_info"}
         return render_template('requests.html', form=form, retrieve=retrieve, info_f=info_f, deletion=delete_request)       
 
     return render_template('requests.html', form=form, info_f=info_f)

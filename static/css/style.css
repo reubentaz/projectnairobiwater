@@ -55,6 +55,14 @@ h2{
     padding: 2%;
     color: white;
 }
+.cont-main{
+    margin: auto;
+    /* width: 50%; */
+    background-color: var(--background);
+    border-radius: 5px;
+    padding: 2%;
+    color: white;
+}
 .cont form{
     padding: 50px;
     background-color: var(--background);
