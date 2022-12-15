@@ -20,7 +20,7 @@ class RegisterForm(FlaskForm):
     firstname = StringField('firstname', validators=[DataRequired()])
     secondname = StringField('secondname', validators=[DataRequired()])
     email= StringField('email', validators=[DataRequired()])
-    role= StringField('role', validators=[DataRequired()])
+    role = SelectField('role', choices=[('ict_officer', 'ICT OFFICER'), ('ict_user', 'ict_user'), ('staff', 'Staff')], validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
     submit = SubmitField('submit')
 

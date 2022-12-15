@@ -1,5 +1,5 @@
 from email import message
-from flask import Flask, Blueprint, render_template, request, abort, session, url_for, redirect
+from flask import Flask, Blueprint, flash, render_template, request, abort, session, url_for, redirect
 from datetime import datetime
 from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm, SolutionForm
