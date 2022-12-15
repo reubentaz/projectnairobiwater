@@ -4,7 +4,8 @@ from datetime import datetime
 from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm, SolutionForm
 from models.base_model import Base, engine
-from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit, solution_submission
+from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit, solution_submission, \
+    get_name
 from routes.req import my_req, display
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -31,14 +32,14 @@ def home():
         mannumber = form.mannumber.data
         password = form.password.data
 
+        # mannumber.strip()
+
         pwd = log_in(mannumber)
 
         if pwd and check_password_hash(pwd, password):
-            # if check_password_hash(pwd, form.password.data):
-            #     message = "It has accepted"
-            #     # return render_template('index.html', form=form, message=message)
-            #     return redirect(url_for('request_info'))
-            # return render_template('index.html', form=form, message=f"{pwd} : hash")
+            session['mannumber'] = mannumber
+            session['Logged_in'] = True
+            session['name'] = get_name(mannumber)
             return redirect(url_for('request_info'))
         return render_template('index.html', form=form, message=f"{pwd} : pwd")
 
@@ -62,6 +63,12 @@ def request_info():
         return render_template('requests.html', form=form, retrieve=retrieve, info_f=info_f, deletion=delete_request)       
 
     return render_template('requests.html', form=form, info_f=info_f)
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
 
 
 @app.route("/delete_request/<id>", methods=['GET', 'POST'])

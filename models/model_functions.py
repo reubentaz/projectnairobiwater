@@ -91,3 +91,11 @@ def feedback_edit(title, info, id):
     except BaseException:
         session.rollback()
         raise
+
+
+def get_name(mannumber):
+    user = session.query(User).filter(User.mannumber==mannumber).first()
+    if user is not None:
+        return user.first_name
+    else:
+        return None

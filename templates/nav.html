@@ -16,10 +16,28 @@
             <a class="nav-link" href="/register_info">Register Info</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
+
+        <ul class="navbar-nav">
+          {% if session['Logged_in'] %}
+          <li class="nav-item">
+            <a href="/" class="nav-link">Hi, {{ session['name'] }}</a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">Logout</a>
+          </li>
+          
+          {% else %}
+          <li class="nav-item">
+            Please login
+            <!-- <a href="/logout" class="nav-link">Logout</a> -->
+          </li>
+          {% endif %}
+
+        </ul>
       </div>
     </div>
   </nav>
