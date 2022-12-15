@@ -1,23 +1,26 @@
 {% extends 'structure.html' %}
 {% block main %}
 
-    <h2 class="text-center">Kindly Login</h2>
     <div class="container logo d-flex justify-content-center">
         <img class="image-fluid " src="../static/images/R.png" alt="">
     </div>
 
-    <main class="container">
-
-        <form action="/" method="POST" enctype="multipart/form-data">
-            {{ form.csrf_token }}
-            {{ form.mannumber(placeholder='Please Enter Mannumber', class="form-control") }}
-            {{ form.password(placeholder="Please Password", class="form-control") }}
-            <div class="d-flex justify-content-center">
-                {{ form.submit(class='btn btn-primary') }}
-            </div>
-            {{ message }}
-            <p>Are you admin? Kindly create accounts <a href="">here</a></p>
-        </form>
-
+    <main class="container-fluid">
+        <div class="d-flex justify-content-center cont">
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <h2 class="text-center">Kindly Login</h2>
+                <div>
+                    {% include 'mymessage.html' %}
+                </div>
+                {{ form.csrf_token }}
+                {{ form.mannumber(placeholder='Please Enter Mannumber', class="form-control") }}
+                {{ form.password(placeholder="Please Password", class="form-control") }}
+                <div class="d-flex justify-content-center">
+                    {{ form.submit(class='btn btn-primary') }}
+                </div>
+                {{ message }}
+                <p>Are you admin? Kindly create accounts <a href="">here</a></p>
+            </form>
+        </div>
     </main>
 {% endblock main %}

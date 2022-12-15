@@ -5,6 +5,18 @@
     scroll-behavior: smooth;
 }
 
+@font-face{
+    font-family: 'switzer-black';
+    /* src: url('../fonts/Switzer_Complete/Fonts/WEB/fonts/Switzer-Black.ttf'); */
+    src: url('../fonts/Switzer-Black.ttf');
+}
+
+.navbar-brand, h2{
+    font-family: 'switzer-black';
+    font-size: 26px;
+    /* color: white; */
+}
+
 :root{
     --background: #2734df;
 }
@@ -21,8 +33,9 @@ nav{
     color: white;
 }
 h2{
-    color: blue;
+    color: azure;
 }
+
 .cont{
     margin: auto;
     /* width: 50%; */

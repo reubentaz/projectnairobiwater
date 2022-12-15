@@ -41,7 +41,7 @@ def home():
             session['Logged_in'] = True
             session['name'] = get_name(mannumber)
             return redirect(url_for('request_info'))
-        return render_template('index.html', form=form, message=f"{pwd} : pwd")
+        flash('Incorrect password', 'danger')
 
     return render_template('index.html', form=form)
 
