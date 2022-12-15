@@ -23,13 +23,21 @@ nav{
 h2{
     color: blue;
 }
-main{
+.cont{
     margin: auto;
-    width: 50%;
-    background-color: var(--background);
+    /* width: 50%; */
+    /* background-color: var(--background); */
     border-radius: 5px;
     padding: 2%;
     color: white;
+}
+.cont form{
+    padding: 50px;
+    background-color: var(--background);
+}
+
+.cont form input, select{
+    margin: 3px;
 }
 .logo{
     margin: auto;
@@ -48,8 +56,10 @@ tbody:hover{
 }
 
 footer{
-    bottom: 0;
-    position: fixed;
+    /* bottom: 0; */
+    /* position: fixed; */
+    background-color: #2734df;
+    color: white;
 }
 main a {
     color: aqua;

@@ -4,21 +4,23 @@
     <div class="container logo d-flex justify-content-center">
         <img class="image-fluid " src="../static/images/R.png" alt="">
     </div>
-    <main class="container">
-
-        <form action="/register_info" method="POST" enctype="multipart/form-data">
-            {{ form.csrf_token }}
-            {{ form.mannumber(placeholder='Please Enter Mannumber', class="form-control") }}
-            {{ form.firstname(placeholder='please Enter firstname', class="form-control") }}
-            {{ form.secondname(placeholder='please Enter secondname', class="form-control")}}
-            {{ form.email(placeholder='please Enter email', class="form-control")}}
-            {{ form.role(placeholder='please Enter role', class="form-control")}}
-            {{ form.password(placeholder="Please Password", class="form-control") }}
-            {{ form.submit(class='w-50 btn btn-primary') }}
-            <p class="bg-success">{{ retrieve }}</p>
-            <p>Are you admin? Kindly create accounts here</p>
-        </form>
-
+    <main class="container-fluid">
+        <div class="d-flex justify-content-center cont">
+            <form action="/register_info" method="POST" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                {{ form.mannumber(placeholder='Please Enter Mannumber', class="form-control") }}
+                {{ form.firstname(placeholder='please Enter firstname', class="form-control") }}
+                {{ form.secondname(placeholder='please Enter secondname', class="form-control")}}
+                {{ form.email(placeholder='please Enter email', class="form-control")}}
+                {{ form.role(placeholder='please Enter role', class="form-control")}}
+                {{ form.password(placeholder="Please Password", class="form-control") }}
+                <div class="d-flex justify-content-center">
+                    {{ form.submit(class='btn btn-primary') }}
+                </div>
+                <p class="bg-success">{{ retrieve }}</p>
+                <p>Are you admin? Kindly create accounts here</p>
+            </form>
+        </div>
     </main>
 
 {% endblock main %} 
