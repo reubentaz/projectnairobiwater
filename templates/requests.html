@@ -47,9 +47,18 @@
             </main>
             <main class="col-md-5 shida-dev">
                 <h3>Solutions</h3>
+                {% for info in info_f %}
+                <a href="/request/{{ info.request_id }}" class="sol-in">
+                    <div>
+                        <h3>{{ info.request_title }}</h3>
+                        <p>{{ sol(info.request_id)}}</p>
+                    </div>
+                </a>                   
+                {% endfor %}
+                
                 <div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem fugit sit tenetur repudiandae sapiente eos ad hic, tempore eligendi deserunt, atque a sint cupiditate excepturi reprehenderit quo consequatur dicta velit?</p>
-                    <button class="btn btn-warning">Seen</button>
+                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem fugit sit tenetur repudiandae sapiente eos ad hic, tempore eligendi deserunt, atque a sint cupiditate excepturi reprehenderit quo consequatur dicta velit?</p> -->
+                    <!-- <button class="btn btn-warning">Seen</button> -->
                 </div>
             </main>
         </div>

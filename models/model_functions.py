@@ -99,3 +99,10 @@ def get_name(mannumber):
         return user.first_name
     else:
         return None
+    
+
+def get_one_solution(id):
+    solution = session.query(Solution).filter(Solution.solution_id==id).first()
+    if solution is not None:
+        return solution.solution_text
+    return None

@@ -5,7 +5,7 @@ from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm, SolutionForm
 from models.base_model import Base, engine
 from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit, solution_submission, \
-    get_name
+    get_name, get_one_solution
 from routes.req import my_req, display
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -61,9 +61,9 @@ def request_info():
             form.request_info.data = ''
             form.request_title.data = ''
             flash('Request submitted successfully', 'success'), {"Refresh": "1; url=/request_info"}
-        return render_template('requests.html', form=form, retrieve=retrieve, info_f=info_f, deletion=delete_request)       
+        return render_template('requests.html', form=form, retrieve=retrieve, info_f=info_f, deletion=delete_request, sol=get_one_solution)
 
-    return render_template('requests.html', form=form, info_f=info_f)
+    return render_template('requests.html', form=form, info_f=info_f, sol=get_one_solution)
 
 
 @app.route("/logout")
