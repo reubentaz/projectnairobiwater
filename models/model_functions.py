@@ -72,6 +72,7 @@ def delete_request(id):
     session.delete(user_request)
     session.commit()
     return "Deleted"
+    
 
 def get_request(id):
     # user_request = session.query(Feedback).get(id)
