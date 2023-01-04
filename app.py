@@ -5,7 +5,7 @@ from jinja2 import TemplateNotFound
 from models.myforms import LoginForm, RequestForm, RegisterForm, SolutionForm
 from models.base_model import Base, engine
 from models.model_functions import delete_request, feedback_submission, requests_made, register, get_users, log_in, get_request, feedback_edit, solution_submission, \
-    get_name, get_one_solution
+    get_name, get_one_solution, get_role
 from routes.req import my_req, display
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -39,6 +39,7 @@ def home():
         if pwd and check_password_hash(pwd, password):
             session['mannumber'] = mannumber
             session['Logged_in'] = True
+            session['role'] = get_role(mannumber)
             session['name'] = get_name(mannumber)
             return redirect(url_for('request_info'))
         flash('Incorrect password', 'danger')

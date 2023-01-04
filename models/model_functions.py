@@ -64,6 +64,7 @@ def log_in(mannumber):
         else:
             return None
     except:
+        session.rollback()
         raise
 
 
@@ -72,7 +73,7 @@ def delete_request(id):
     session.delete(user_request)
     session.commit()
     return "Deleted"
-    
+
 
 def get_request(id):
     # user_request = session.query(Feedback).get(id)
@@ -107,3 +108,11 @@ def get_one_solution(id):
     if solution is not None:
         return solution.solution_text
     return None
+
+
+def get_role(mannumber):
+    user = session.query(User).filter(User.mannumber==mannumber).first()
+    if user is not None:
+        return user.role
+    else:
+        return None

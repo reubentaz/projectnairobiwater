@@ -33,11 +33,20 @@
                 <div class="row">
                     <h3 class="">{{ info.request_title }}</h3>
                     <p class="">{{ info.request_info }}</p>
-                    <p>Time requested:       {{ info.feedback_time }}</p>
+                    <div class="d-flex justify-content-between">
+                        <span>
+                            Time requested:
+                        </span>
+                        <span>
+                            {{ info.feedback_time }}
+                        </span>
+                    </div>
                     <div class="col-md-6">
-                        <a href="/request/{{info.request_id}}">
+                        {% if session['role'] == 'ict_user' or session['role'] == 'ict_officer' %}
+                        <a href="/request/{{ info.request_id }}">
                             <button class="btn btn-light">View Problems</button>                         
                         </a>
+                        {% endif %}
                         <a href="/delete_request/{{info.request_id}}">
                             <button class="btn btn-danger">delete</button>                         
                         </a>

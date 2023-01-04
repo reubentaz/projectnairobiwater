@@ -13,10 +13,10 @@
             <div class="card-text">
                 {{ request_details.request_info }}
             </div>
-            <button class="btn btn-primary">Give Solution</button>
         </div>
         <h4>Solutions</h4>
         <div class="row">
+            {% if session['role'] == 'ict_officer' or session['role'] == 'ict_user' %}
             <div class="card col-md-5">
                 <form action="/solution/{{ id }}" method="POST" enctype="multipart/form-data">
                     {{ form.csrf_token }}
@@ -26,13 +26,14 @@
                 </form>
                 {{ info }}
             </div>
-                {% for one in sol: %}
-                <div class="card col-md-5">
-                    <div class="card-text">
-                        {{ one.solution_text }}
-                    </div>
+            {% endif %}
+            {% for one in sol: %}
+            <div class="card col-md-5">
+                <div class="card-text">
+                    {{ one.solution_text }}
                 </div>
-                {% endfor %}
+            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock main %}

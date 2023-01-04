@@ -9,18 +9,19 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
+          {% if session['role'] == 'ict_officer' or session['role'] == 'ict_user' %}
           <li class="nav-item">
             <a class="nav-link" href="/request_info">Request Info</a>
           </li>
+          {% if session['role'] == 'ict_officer' %}
           <li class="nav-item">
             <a class="nav-link" href="/register_info">Register Info</a>
           </li>
+          {% endif %}
+          {% endif %}
         </ul>
-        <!-- <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
 
+        
         <ul class="navbar-nav">
           {% if session['Logged_in'] %}
           <li class="nav-item">
